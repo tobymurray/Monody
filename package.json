@@ -1,9 +1,11 @@
 {
-  "name": "frontend",
+  "name": "monody",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://tobymurray.github.io/monody",
   "dependencies": {
     "apollo-boost": "^0.1.10",
+    "gh-pages": "^1.2.0",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "react": "^16.4.1",
@@ -15,6 +17,8 @@
     "semantic-ui-react": "^0.81.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
