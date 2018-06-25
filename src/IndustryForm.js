@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import AddressForm from './AddressForm';
-import { Button, Checkbox, Form, Header, Container, TextArea } from 'semantic-ui-react'
+import { Button, Checkbox, Form, Header, Container, TextArea, Dropdown } from 'semantic-ui-react'
 import SocialMediaForm from './SocialMediaForm';
+import { industryRoles } from './IndustryRoles';
 
 class IndustryForm extends Component {
   constructor(props) {
@@ -36,7 +37,15 @@ class IndustryForm extends Component {
         <Form>
           <Form.Field>
             <label>Role</label>
-            <input placeholder='Role' />
+            <Dropdown
+              fluid 
+              search 
+              selection
+              button
+              labeled
+              options={industryRoles}
+              text='Select role'
+            />
           </Form.Field>
           <AddressForm />
           <SocialMediaForm />
