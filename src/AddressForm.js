@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Checkbox, Form } from 'semantic-ui-react'
 
 const AddressForm = () => (
-  <div>
+  <Form.Group>
     <Form.Field>
       <label>First Name</label>
       <input placeholder='First Name' />
@@ -28,7 +28,11 @@ const AddressForm = () => (
       <label>Country</label>
       <input placeholder='Country' />
     </Form.Field>
-  </div>
+    <Form.Field>
+      <label>Phone number</label>
+      <input placeholder='Phone number' />
+    </Form.Field>
+  </Form.Group>
 )
 
 export default AddressForm

@@ -1,11 +1,11 @@
 import React from 'react'
-import { Header } from 'semantic-ui-react';
+import { Header, Container } from 'semantic-ui-react';
 
 const HomeComponent = () => (
-    <div>
+    <Container textAlign="center">
         <Header as='h1'>Monody</Header>
         <Header as='h2'>Bring live music back to life</Header>
-    </div>
+    </Container>
 )
 
 export default HomeComponent

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AddressForm from './AddressForm';
-import { Button, Checkbox, Form, Header } from 'semantic-ui-react'
+import { Button, Checkbox, Form, Header, Container, TextArea } from 'semantic-ui-react'
+import SocialMediaForm from './SocialMediaForm';
 
 class IndustryForm extends Component {
   constructor(props) {
@@ -31,10 +32,18 @@ class IndustryForm extends Component {
   //   bio
   render() {
     return (
-      <Form>
-        <AddressForm />
-        <input type="submit" value="Submit" />
-      </Form>
+      <Container text>
+        <Form>
+          <Form.Field>
+            <label>Role</label>
+            <input placeholder='Role' />
+          </Form.Field>
+          <AddressForm />
+          <SocialMediaForm />
+          <Form.Field control={TextArea} label='Bio' placeholder='Tell us more about you...' />
+          <input type="submit" value="Submit" />
+        </Form>
+      </Container>
     );
   }
 }

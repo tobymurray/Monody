@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AddressForm from './AddressForm';
-import { Button, Checkbox, Form, Header } from 'semantic-ui-react'
+import { Button, Checkbox, Form, Header, Container, TextArea } from 'semantic-ui-react'
+import SocialMediaForm from './SocialMediaForm';
 
 class VenueForm extends Component {
   constructor(props) {
@@ -21,34 +22,23 @@ class VenueForm extends Component {
     alert('An essay was submitted: ' + this.state.value);
     event.preventDefault();
   }
-  // address
-  // contact person first name
-  // contact person last name
-  // email address
   // "I identify as"
   // names of artists
-  // website
-  // facebook page
-  // instagram
-  // twitter
+
   // 50 word bio
   // photo
 
   render() {
     return (
-      <Form>
-        <Form.Field>
-          <label>Genre of music</label>
-          <input placeholder='Genre of music' />
-        </Form.Field>
-        <Form.Field>
-          <label>Name of artist, band or project</label>
-          <input placeholder='Name of artist, band or project' />
-        </Form.Field>
-        <Header>Venue contact</Header>
-        <AddressForm />
-        <input type="submit" value="Submit" />
-      </Form>
+      <Container text>
+        <Form>
+          <Header>Venue contact</Header>
+          <AddressForm />
+          <SocialMediaForm />
+          <Form.Field control={TextArea} label='Bio' placeholder='Tell us more about you...' />
+          <input type="submit" value="Submit" />
+        </Form>
+      </Container>
     );
   }
 }

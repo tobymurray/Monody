@@ -11,13 +11,15 @@ import CreateComponent from './CreateComponent';
 class App extends Component {
   render() {
     return (
-      <Router><div>
-        <MenuComponent />
-        <Route exact path="/" component={HomeComponent} />
-        <Route path="/home" component={HomeComponent} />
-        <Route path="/discover" component={DiscoverComponent} />
-        <Route path="/create" component={CreateComponent} />
-      </div>
+      <Router
+        basename={process.env.PUBLIC_URL}>
+        <div>
+          <MenuComponent />
+          <Route exact path="/" component={HomeComponent} />
+          <Route path="/home" component={HomeComponent} />
+          <Route path="/discover" component={DiscoverComponent} />
+          <Route path="/create" component={CreateComponent} />
+        </div>
       </Router>
     );
   }
