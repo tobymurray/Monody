@@ -22,11 +22,6 @@ class VenueForm extends Component {
     alert('An essay was submitted: ' + this.state.value);
     event.preventDefault();
   }
-  // "I identify as"
-  // names of artists
-
-  // 50 word bio
-  // photo
 
   render() {
     return (
@@ -35,6 +30,14 @@ class VenueForm extends Component {
           <Header>Venue contact</Header>
           <AddressForm />
           <SocialMediaForm />
+          <Form.Field>
+            <label>Lead time for bookings</label>
+            <input placeholder='Lead time' />
+          </Form.Field>
+          <Form.Field>
+            <label>Application dates</label>
+            <input placeholder='Application dates' />
+          </Form.Field>
           <Form.Field control={TextArea} label='Bio' placeholder='Tell us more about you...' />
           <input type="submit" value="Submit" />
         </Form>
