@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AddressForm from './AddressForm';
-import { Button, Checkbox, Form, Header, Container, TextArea, Dropdown } from 'semantic-ui-react'
+import { Form,Container, TextArea, Dropdown } from 'semantic-ui-react'
 import SocialMediaForm from './SocialMediaForm';
 import { industryRoles } from './IndustryRoles';
 

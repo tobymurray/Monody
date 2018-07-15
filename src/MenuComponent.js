@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import { Input, Menu } from 'semantic-ui-react'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import DiscoverComponent from './DiscoverComponent';
-import CreateComponent from './CreateComponent';
-import HomeComponent from './HomeComponent';
+import { Link } from "react-router-dom";
 
 export default class MenuComponent extends Component {
   state = { activeItem: 'home' }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AddressForm from './AddressForm';
-import { Button, Checkbox, Form, Header, Container, TextArea } from 'semantic-ui-react'
+import { Form, Container, TextArea } from 'semantic-ui-react'
 import SocialMediaForm from './SocialMediaForm';
 
 class ArtistForm extends Component {
