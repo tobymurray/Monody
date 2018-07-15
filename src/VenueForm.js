@@ -1,34 +1,45 @@
 import React, { Component } from 'react';
 import AddressForm from './AddressForm';
-import { Button, Checkbox, Form, Header, Container, TextArea } from 'semantic-ui-react'
+import { Form, Header, Container, TextArea } from 'semantic-ui-react'
 import SocialMediaForm from './SocialMediaForm';
 
 class VenueForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 'Please write an essay about your favorite DOM element.'
+      firstName: "",
+      lastName: "",
+      address1: "",
+      address2: "",
+      postalCode: "",
+      city: "",
+      country: "",
+      phoneNumber: ""
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
+  handleChange = (e) => {
+    console.log("Event is: ", e)
+    const { name, value } = e.target
+    console.log("name: ", name, " value: ", value);
+    this.setState({ [name]: value })
   }
 
-  handleSubmit(event) {
-    alert('An essay was submitted: ' + this.state.value);
-    event.preventDefault();
+  handleSubmit = () => {
+    console.log("Here's the state: ", this.state)
+    alert("Submitting a form")
+    this.setState({ bio: '' })
   }
 
   render() {
+    // AddressForm
+    const { bio } = this.state
+
     return (
       <Container text>
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <Header>Venue contact</Header>
-          <AddressForm />
+          <AddressForm handleChange={this.handleChange} />
           <SocialMediaForm />
           <Form.Field>
             <label>Lead time for bookings</label>
@@ -38,8 +49,8 @@ class VenueForm extends Component {
             <label>Application dates</label>
             <input placeholder='Application dates' />
           </Form.Field>
-          <Form.Field control={TextArea} label='Bio' placeholder='Tell us more about you...' />
-          <input type="submit" value="Submit" />
+          <Form.Field control={TextArea} label='Bio' placeholder='Tell us more about you...' name="bio" value={bio} onChange={this.handleChange} />
+          <Form.Button content='Submit' />
         </Form>
       </Container>
     );
