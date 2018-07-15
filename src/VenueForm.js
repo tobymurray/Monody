@@ -1,28 +1,29 @@
 import React, { Component } from 'react';
 import AddressForm from './AddressForm';
-import { Form, Header, Container, TextArea, Dropdown } from 'semantic-ui-react'
+import { Form, Header, Container, TextArea } from 'semantic-ui-react'
 import SocialMediaForm from './SocialMediaForm';
 import StreetAddressForm from './StreetAddressForm';
 import { venueTypes } from './VenueTypes';
-import Dropzone from 'react-dropzone' 
+import Dropzone from 'react-dropzone'
+import { select } from 'async';
 
 class VenueForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: "",
-      lastName: "",
-      address1: "",
-      address2: "",
-      postalCode: "",
-      city: "",
-      country: "",
-      phoneNumber: "",
       files: []
     };
   }
 
   handleChange = (e) => {
+    console.log("Event: ", e.name, "value: ", e.value);
+
+    var propValue;
+  for(var propName in e) {
+    propValue = e[propName]
+
+    console.log(propName,propValue);
+  }
     const { name, value } = e.target
     this.setState({ [name]: value })
   }
@@ -48,48 +49,34 @@ class VenueForm extends Component {
           <Header>Venue</Header>
           <Form.Field>
             <label>Venue Name</label>
-            <input placeholder='Name' />
+            <input placeholder='Name' name="venue_name" onChange={this.handleChange} />
           </Form.Field>
-          <section> 
-            <div className="dropzone"> 
-              <Dropzone onDrop={this.onDrop.bind(this)}> 
-                <p>Upload some images of your venue</p> 
-              </Dropzone> 
-            </div> 
-            <aside> 
-              <h2>Attached files</h2> 
-              <ul> 
-                { 
-                  this.state.files.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>) 
-                } 
-              </ul> 
-            </aside> 
-          </section> 
-          <StreetAddressForm />
-          <Form.Field>
-            <label>Venue Type</label>
-            <Dropdown
-              fluid
-              search
-              selection
-              button
-              labeled
-              options={venueTypes}
-              text='Select type of venue'
-            />
-
-            <hr />
-          </Form.Field>
+          <section>
+            <div className="dropzone">
+              <Dropzone onDrop={this.onDrop.bind(this)}>
+                <p>Upload some images of your venue</p>
+              </Dropzone>
+            </div>
+            <aside>
+              <h2>Attached files</h2>
+              <ul>
+                {
+                  this.state.files.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>)
+                }
+              </ul>
+            </aside>
+          </section>
+          <StreetAddressForm handleChange={this.handleChange} fieldPrefix="venue_" />
           <Header>Venue contact</Header>
-          <AddressForm handleChange={this.handleChange} />
-          <SocialMediaForm />
+          <AddressForm handleChange={this.handleChange} fieldPrefix="venueContact_" />
+          <SocialMediaForm handleChange={this.handleChange} fieldPrefix="venueContact_" />
           <Form.Field>
             <label>Lead time for bookings</label>
-            <input placeholder='Lead time' />
+            <input placeholder='Lead time' name="leadTime" onChange={this.handleChange} />
           </Form.Field>
           <Form.Field>
             <label>Application dates</label>
-            <input placeholder='Application dates' />
+            <input placeholder='Application dates' name="applicationDates" onChange={this.handleChange} />
           </Form.Field>
           <Form.Field control={TextArea} label='Bio' placeholder='Tell us more about you...' name="bio" value={bio} onChange={this.handleChange} />
           <Form.Button content='Submit' />

@@ -15,16 +15,16 @@ class AddressForm extends Component {
       <Form.Group>
         <Form.Field>
           <label>First Name</label>
-          <input placeholder='First Name' name="firstName" value={firstName} onChange={this.props.handleChange} />
+          <input placeholder='First Name' name={this.props.fieldPrefix + "firstName"} value={firstName} onChange={this.props.handleChange} />
         </Form.Field>
         <Form.Field >
           <label>Last Name</label>
-          <input placeholder='Last Name' name="lastName" value={lastName} onChange={this.props.handleChange} />
+          <input placeholder='Last Name' name={this.props.fieldPrefix + "lastName"} value={lastName} onChange={this.props.handleChange} />
         </Form.Field>
-        <StreetAddressForm handleChange={this.props.handleChange} />
+        <StreetAddressForm handleChange={this.props.handleChange} fieldPrefix={this.props.fieldPrefix} />
         <Form.Field >
           <label>Phone number</label>
-          <input placeholder='Phone number' name="phoneNumber" value={phoneNumber} onChange={this.props.handleChange} />
+          <input placeholder='Phone number' name={this.props.fieldPrefix + "phoneNumber"} value={phoneNumber} onChange={this.props.handleChange} />
         </Form.Field>
       </Form.Group>
     )
