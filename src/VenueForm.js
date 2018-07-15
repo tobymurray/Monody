@@ -4,6 +4,7 @@ import { Form, Header, Container, TextArea, Dropdown } from 'semantic-ui-react'
 import SocialMediaForm from './SocialMediaForm';
 import StreetAddressForm from './StreetAddressForm';
 import { venueTypes } from './VenueTypes';
+import Dropzone from 'react-dropzone' 
 
 class VenueForm extends Component {
   constructor(props) {
@@ -16,7 +17,8 @@ class VenueForm extends Component {
       postalCode: "",
       city: "",
       country: "",
-      phoneNumber: ""
+      phoneNumber: "",
+      files: []
     };
   }
 
@@ -31,6 +33,12 @@ class VenueForm extends Component {
     this.setState({ bio: '' })
   }
 
+  onDrop = (files) => {
+    this.setState({
+      files
+    })
+  }
+
   render() {
     const { bio } = this.state
 
@@ -42,6 +50,21 @@ class VenueForm extends Component {
             <label>Venue Name</label>
             <input placeholder='Name' />
           </Form.Field>
+          <section> 
+            <div className="dropzone"> 
+              <Dropzone onDrop={this.onDrop.bind(this)}> 
+                <p>Upload some images of your venue</p> 
+              </Dropzone> 
+            </div> 
+            <aside> 
+              <h2>Attached files</h2> 
+              <ul> 
+                { 
+                  this.state.files.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>) 
+                } 
+              </ul> 
+            </aside> 
+          </section> 
           <StreetAddressForm />
           <Form.Field>
             <label>Venue Type</label>
