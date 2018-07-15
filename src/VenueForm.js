@@ -30,7 +30,6 @@ class VenueForm extends Component {
   }
 
   render() {
-    // AddressForm
     const { bio } = this.state
 
     return (
