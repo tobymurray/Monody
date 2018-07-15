@@ -3,9 +3,6 @@ import AddressForm from './AddressForm';
 import { Form, Header, Container, TextArea } from 'semantic-ui-react'
 import SocialMediaForm from './SocialMediaForm';
 import StreetAddressForm from './StreetAddressForm';
-import { venueTypes } from './VenueTypes';
-import Dropzone from 'react-dropzone'
-import { select } from 'async';
 
 class VenueForm extends Component {
   constructor(props) {
@@ -51,21 +48,6 @@ class VenueForm extends Component {
             <label>Venue Name</label>
             <input placeholder='Name' name="venue_name" onChange={this.handleChange} />
           </Form.Field>
-          <section>
-            <div className="dropzone">
-              <Dropzone onDrop={this.onDrop.bind(this)}>
-                <p>Upload some images of your venue</p>
-              </Dropzone>
-            </div>
-            <aside>
-              <h2>Attached files</h2>
-              <ul>
-                {
-                  this.state.files.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>)
-                }
-              </ul>
-            </aside>
-          </section>
           <StreetAddressForm handleChange={this.handleChange} fieldPrefix="venue_" />
           <Header>Venue contact</Header>
           <AddressForm handleChange={this.handleChange} fieldPrefix="venueContact_" />
