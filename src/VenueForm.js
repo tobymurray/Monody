@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import AddressForm from './AddressForm';
-import { Form, Header, Container, TextArea } from 'semantic-ui-react'
+import { Form, Header, Container, TextArea, Dropdown } from 'semantic-ui-react'
 import SocialMediaForm from './SocialMediaForm';
+import StreetAddressForm from './StreetAddressForm';
+import { venueTypes } from './VenueTypes';
 
 class VenueForm extends Component {
   constructor(props) {
@@ -35,6 +37,26 @@ class VenueForm extends Component {
     return (
       <Container text>
         <Form onSubmit={this.handleSubmit}>
+          <Header>Venue</Header>
+          <Form.Field>
+            <label>Venue Name</label>
+            <input placeholder='Name' />
+          </Form.Field>
+          <StreetAddressForm />
+          <Form.Field>
+            <label>Venue Type</label>
+            <Dropdown
+              fluid
+              search
+              selection
+              button
+              labeled
+              options={venueTypes}
+              text='Select type of venue'
+            />
+
+            <hr />
+          </Form.Field>
           <Header>Venue contact</Header>
           <AddressForm handleChange={this.handleChange} />
           <SocialMediaForm />
