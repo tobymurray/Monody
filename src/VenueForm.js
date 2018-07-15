@@ -19,9 +19,7 @@ class VenueForm extends Component {
   }
 
   handleChange = (e) => {
-    console.log("Event is: ", e)
     const { name, value } = e.target
-    console.log("name: ", name, " value: ", value);
     this.setState({ [name]: value })
   }
 
