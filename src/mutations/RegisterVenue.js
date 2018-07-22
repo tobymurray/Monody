@@ -65,7 +65,6 @@ export default function registerVenue(
       }
     }
     `
-  // console.log("Sending the following mutation: ", mutation);
 
   axios.post('', mutation
   ).then(function (response) {

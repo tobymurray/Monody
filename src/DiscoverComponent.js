@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
 import { Form, Header, Container } from 'semantic-ui-react'
 import { venues } from './Venues'
+import getVenues from './queries/GetVenues'
 
 class DiscoverComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      initialItems: venues,
-      items: venues
+      initialItems: [],
+      items: []
     };
+  }
+
+  componentDidMount() {
+    getVenues().then(newVenues => {
+      this.setState({ initialItems: newVenues, items: newVenues });
+    }).catch(function (error) {
+      console.log("Method failed with error:", error)
+      console.log("   specific response is: ", error.resposne)
+    });
   }
 
   filterList = (event) => {
