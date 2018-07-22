@@ -70,7 +70,7 @@ export default function registerVenue(
   axios.post('', mutation
   ).then(function (response) {
     console.log(response);
-    if (response.data.errors !== undefined && response.data.errors.length != 0) {
+    if (response.data.errors !== undefined && response.data.errors.length !== 0) {
       alert(response.data.errors.map(error => error.message))
     } else {
       alert("Successfully created a venue!")
